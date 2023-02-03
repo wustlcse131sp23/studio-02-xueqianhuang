@@ -18,7 +18,7 @@ public class Ruin {
 		winLimit = in.nextInt();
 		System.out.println("How many times you went to casino?");
 		totalSimulations = in.nextInt();
-		double expectedRuin
+		double expectedRuin;
 		
 		int winDay = 0;
 		int ruinDay = 0;
@@ -31,36 +31,40 @@ public class Ruin {
 			{
 				times ++; 
 				double a = Math.random();
-				if (a >= winChance)
+				if (a <= winChance)
 				{
 					everyStartAmount ++;
 				}
 				else
 					everyStartAmount --;
 			}
-			System.out.println("Today is " + i + " day.");
-			System.out.println("You have played " + times + " times.");
+			System.out.print("Simulation " + i + ": " + times + " " );
 				if (everyStartAmount >= winLimit)
 				{
-					System.out.println("You win today.");	
+					System.out.println("WIN");	
 					winDay ++;
 				}
-				else if(everyStartAmount < winLimit)
+				else
 				{
-					System.out.println("You ruin today.");		
+					System.out.println("LOSE");		
 					ruinDay ++;
 				}
-				if (winChance == 0.5)
-				{
-					expectedRuin = (1 - startAmount / winLimit);
-					System.out.println("The expected ruin is " + expectedRuin + " .");
-				}
-				else 
-				{
-					double 
-					expectedRuin = 
-				}
+				
 		}
+		  double ruinRate = (double) ruinDay / totalSimulations;
+		  System.out.println("Ruin rate from Simulation:  " + ruinRate + " ");
+		  if (winChance == 0.5)
+		  {
+			expectedRuin = (1 - startAmount / winLimit);
+			System.out.println("The expected ruin is " + expectedRuin + " .");
+		  }
+		  else 
+		  {
+			double alpha = (1 - winChance) / winChance;
+			expectedRuin = (Math.pow(alpha,startAmount) - Math.pow(alpha,winLimit)) / (1 - Math.pow(alpha,winLimit));
+			System.out.println("Expected Ruin Rate: " + expectedRuin);
+		  }
+		 
 		
 	}
 
