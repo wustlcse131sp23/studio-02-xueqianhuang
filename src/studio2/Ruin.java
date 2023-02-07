@@ -2,8 +2,8 @@ package studio2;
 
 import java.util.Scanner;
 
-public class Ruin 
-{
+public class Ruin {
+	
 	public static void main(String[] args) 
 	{
 		try (Scanner in = new Scanner(System.in)) {
